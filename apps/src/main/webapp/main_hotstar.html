@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Disney+ Clone</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style type="text/css">* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background: #0c111b;
+  position: relative;
+  font-family: roboto, sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 4%;
+  background: #0c111b;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  height: 70px;
+}
+
+.nav-links {
+  margin-top: 10px;
+  display: flex;
+  list-style: none;
+}
+
+.nav-items a {
+  text-decoration: none;
+  margin-left: 20px;
+  text-transform: capitalize;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.right-container {
+  display: block;
+  margin-left: auto;
+}
+
+.search-box {
+  border: none;
+  border-bottom: 1px solid #aaa;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  color: #fff;
+  width: 250px;
+  text-transform: capitalize;
+  font-size: 16px;
+font-weight: 500;
+  transition: 0.5s;
+}
+
+.search-box:focus {
+  width: 400px;
+  border-color: #1f80e0;
+}
+
+.sub-btn {
+  background: #1f80e0;
+  height: 30px;
+  padding: 0 20px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+.login-link {
+  color: #fff;
+  opacity: 0.9;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  padding: 20px 0;
+  overflow-x: hidden;
+  margin-top: 80px;
+}
+
+.carousel {
+  display: flex;
+  width: 92%;
+  height: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.slider {
+  flex: 0 0 auto;
+  margin-right: 30px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  transition: 1s;
+  overflow: hidden;
+}
+
+.slider img {
+  width: 70%;
+  min-height: 100%;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+}
+
+.slide-content {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(to right, #030b17 80%, #0c111b00);
+  color: #fff;
+}
+
+.movie-title {
+  padding-left: 50px;
+  text-transform: capitalize;
+  margin-top: 80px;
+}
+
+.movie-des {
+  width: 80%;
+  line-height: 30px;
+  padding-left: 50px;
+  margin-top: 30px;
+  opacity: 0.8;
+}
+
+.video-card-container {
+  position: relative;
+  width: 92%;
+  margin: auto;
+  height: 10vw;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.video-card {
+  position: relative;
+  min-width: calc(100% / 5 - 10px);
+  width: calc(100% / 5 - 10px);
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #030b17;
+}
+
+.video-card-image,
+.card-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-video {
+  position: absolute;
+}
+
+.video-card:hover .video-card-image {
+  display: none;
+}
+
+.title {
+  color: #fff;
+  opacity: 0.9;
+  padding-left: 4%;
+  text-transform: capitalize;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.movies-list {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  margin: 10px 0 20px;
+}
+
+.card-container {
+  position: relative;
+  width: 92%;
+  padding-left: 10px;
+  height: 220px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+}
+
+.card-container::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  position: relative;
+  min-width: 150px;
+  width: 150px;
+  height: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card:hover .card-body {
+  opacity: 1;
+}
+
+.card-body {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(4, 8, 15, 0), #192133 90%);
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-top: 60%;
+}
+
+.des {
+  color: #fff;
+  opacity: 0.8;
+  margin: 5px 0;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.watchlist-btn {
+  position: relative;
+  width: 100%;
+  text-transform: capitalize;
+  background: none;
+  border: none;
+  font-weight: 500;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 5px 0;
+  cursor: pointer;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+.watchlist-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  height: 35px;
+  width: 35px;
+  background-image: url(images/add.png);
+  background-size: cover;
+  transform: scale(0.4);
+}
+
+.watchlist-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pre-btn,
+.nxt-btn {
+  position: absolute;
+  top: 0;
+  width: 5%;
+  height: 100%;
+  z-index: 2;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.pre-btn {
+  left: 0;
+  background: linear-gradient(to right, #0c111b 0%, #0c111b00);
+}
+
+.nxt-btn {
+  right: 0;
+  background: linear-gradient(to left, #0c111b 0%, #0c111b00);
+}
+
+.pre-btn img,
+.nxt-btn img {
+  width: 15px;
+  height: 20px;
+  opacity: 0;
+}
+
+.pre-btn:hover img,
+.nxt-btn:hover img {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+.search-container {
+    width: 300px;
+    margin-left: 2rem;
+  }
+
+  .search-input {
+    border: none;
+  border-bottom: 1px solid #aaa;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  color: #fff;
+  width: 250px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.5s;
+  }
+
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a242f;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: none;
+  }
+
+  .search-result-item {
+    display: flex;
+    padding: 0.75rem;
+    gap: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #2a343f;
+  }
+
+  .search-result-item:hover {
+    background: #2a343f;
+  }
+
+  .search-result-thumb {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .search-result-info {
+    flex: 1;
+  }
+
+  .search-result-title {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+
+  .search-result-rating {
+    color: #ffd700;
+  }
+
+  .main-content {
+    padding-top: 80px;
+  }
+
+  .hero {
+    height: auto;
+    padding-top: 80px;
+  }
+
+  .trending-hero {
+    position: relative;
+    height: 600px;
+    margin-bottom: 2rem;
+    cursor: pointer;
+  }
+
+  .trending-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .trending-hero-content {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .trending-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background: #fff;
+  }
+
+  .row {
+    padding: 2rem;
+    position: relative;
+  }
+
+  .row-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-container {
+    position: relative;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+    border: none;
+  }
+
+  .carousel-arrow:hover {
+    background: rgba(0,0,0,0.8);
+  }
+
+  .carousel-arrow.prev {
+    left: 10px;
+  }
+
+  .carousel-arrow.next {
+    right: 10px;
+  }
+
+  .movie-card {
+    min-width: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+
+  .movie-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .movie-title {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1001;
+  }
+
+  .modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    margin: 5vh auto;
+    background: #1a242f;
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 0;
+  }
+
+  .close-modal {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  .iframe-container {
+    height: 100%;
+    position: relative;
+  }
+
+  .movie-details {
+    padding: 2rem;
+    overflow-y: auto;
+  }
+
+  .movie-details h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .movie-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #aaa;
+  }
+
+  .movie-overview {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .cast-item {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .cast-photo {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+  }
+
+  .cast-info {
+    padding: 0.5rem;
+  }
+
+  .cast-name {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+
+  .cast-character {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #00a8e1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(26, 36, 47, 0.8);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .season-episode-selector {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .season-episode-selector select {
+    padding: 0.5rem;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    color: #fff;
+    min-width: 150px;
+  }
+
+  .season-episode-selector select:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  @media (max-width: 768px) {
+    .nav-content {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      justify-content: flex-end;
+    }
+
+    .search-container {
+      width: 200px;
+    }
+
+    .trending-hero {
+      height: 400px;
+    }
+
+    .trending-hero-content {
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+    }
+
+    .modal-content {
+      grid-template-columns: 1fr;
+      height: 90vh;
+      width: 95%;
+    }
+
+    .iframe-container {
+      height: 300px;
+    }
+
+    .movie-details {
+      height: calc(90vh - 300px);
+    }
+
+    .cast-list {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .row {
+      padding: 1rem;
+    }
+
+    .carousel-arrow {
+      display: none;
+    }
+
+    .movie-card {
+      min-width: 150px;
+    }
+  }
+  
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="images/logo.png" class="brand-logo" alt="" />
+      <ul class="nav-links">
+         <li class="nav-items"><a href="main_hotstar.html">Home</a></li>
+         <li class="nav-items"><a href="suggested.html">Content</a></li>
+        <li class="nav-items"><a href="tv_Hotstar.html">TV Show</a></li>
+        <li class="nav-items"><a href="move_Hotstar.html">Movies</a></li>
+        <li class="nav-items"><a href="sport_Hotstar.html">Sports</a></li>
+       
+      </ul>
+      <div class="right-container">
+        <div class="search-container">
+        <input type="text" class="search-box" class="search-input" placeholder="Search movies &amp; TV shows..." id="search-input" />
+        <div class="search-results" id="search-results"></div>
+        <br>
+        <br>
+            <a href="home.html">
+        <img src="home (2).png" alt="Company Logo" style="width: 50px; height: auto; background-color: transparent; ">
+       </a>
+        <a href="login_main.html" class="login-link">Login</a>
+      </div>
+      </div>
+    </nav>
+    <br>
+
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">;</span>
+      <div class="iframe-container">
+        <div class="loader" id="loader"></div>
+        <iframe id="player-iframe" allowfullscreen></iframe>
+      </div>
+      <div class="movie-details">
+      </div>
+    </div>
+  </div>
+    <div class="carousel-container">
+      <div class="carousel">
+        <!--<div class="slider">
+          <div class="slide-content">
+            <h1 class="movie-title">Loki</h1>
+            <p class="movie-des">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+              architecto saepe deleniti repellendus modi excepturi?
+            </p>
+          </div>
+          <img src="images/slider 1.PNG" alt="" />
+        </div>-->
+      </div>
+    </div>
+    <div class="video-card-container">
+      <div class="video-card">
+        <a href="videos/disney.mp4">
+        <img src="images/disney.PNG" class="video-card-image" alt="" />
+        <video src="videos/disney.mp4" mute loop class="card-video"></video>
+        </a>
+      </div>
+      <div class="video-card">
+       <a href="videos/pixar.mp4">
+        <img src="images/pixar.PNG" class="video-card-image" alt="" />
+        <video src="videos/pixar.mp4" mute loop class="card-video"></video>
+        </a>
+      </div>
+      <div class="video-card">
+       <a href="videos/marvel.mp4">
+        <img src="images/marvel.PNG" class="video-card-image" alt="" />
+        <video src="videos/marvel.mp4" mute loop class="card-video"></video>
+        </a>
+      </div>
+      <div class="video-card">
+       <a href="videos/star-war.mp4">
+        <img src="images/star-wars.PNG" class="video-card-image" alt="" />
+        <video src="videos/star-war.mp4" mute loop class="card-video"></video>
+        </a>
+      </div>
+      <div class="video-card">
+       <a href="videos/geographic.mp4">
+        <img src="images/geographic.PNG" class="video-card-image" alt="" />
+        <video src="videos/geographic.mp4" mute loop class="card-video"></video>
+        </a>
+      </div>
+    </div>
+    <script src="index.js" async></script>
+    <h1 class="title">Recommended For You</h1>
+    <div class="movies-list">
+      <button class="pre-btn" title="btn">
+        <img src="images/pre.png" alt="" />
+      </button>
+      <button class="nxt-btn" title="btn">
+        <img src="images/nxt.png" alt="" />
+      </button>
+      
+      
+      <div class="card-container">
+        <div class="card">
+          <video class="card-img" controls>
+            <source src="loki.mp4" type="video/mp4">
+          <img src="images/poster 1.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </video>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="images/poster 2.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <video class="card-img" controls>
+            <source src="Avengers_ Endgame.mp4" type="video/mp4">
+          <img src="images/poster 3.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+            <video class="card-img" controls>
+            <source src="Avengers2.mp4" type="video/mp4">
+          <img src="images/poster 4.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <video class="card-img" controls>
+            <source src="Thor_ Ragnarok.mp4" type="video/mp4">
+          <img src="images/poster 5.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <video class="card-img" controls>
+            <source src="the falcon and the winter.mp4" type="video/mp4">
+          <img src="images/poster 6.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>  <div class="card">
+         <video class="card-img" controls>
+            <source src="utomp3.com - Pirates Of The Caribbean Salazars Revenge  Trailer In Hindi_360P.mp4" type="video/mp4">
+          <img src="images/poster 7.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+            </video>
+           
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 8.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 9.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 10.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 11.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 12.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 class="title">Popular Shows</h1>
+    <div class="movies-list">
+      <button class="pre-btn" title="btn">
+        <img src="images/pre.png" alt="" />
+      </button>
+      <button class="nxt-btn" title="btn">
+        <img src="images/nxt.png" alt="" />
+      </button>
+      <div class="card-container">
+        <div class="card">
+          <img src="images/poster 12.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 11.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 10.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 9.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 8.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 7.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 6.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 5.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 4.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 3.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 2.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/poster 1.png" class="card-img" alt="" />
+          <div class="card-body">
+            <h2 class="name">Movie Name</h2>
+            <h6 class="des">Lorem ipsum dolor sit amet.</h6>
+            <button class="watchlist-btn">add to watchlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">let movies = [
+    {
+      name: "Falcon and the Winter Soldier",
+      des: "A compelling story of legacy and heroism in the Marvel universe.",
+      image: "images/slider 2.PNG",
+    },
+    {
+      name: "Loki",
+      des: "The God of Mischief's journey through time and identity.",
+      image: "images/slider 1.PNG",
+    },
+    {
+      name: "WandaVision",
+      des: "A blend of mystery and sitcom fun in Wanda and Vision's life.",
+      image: "images/slider 3.PNG",
+    },
+    {
+      name: "Raya and the Last Dragon",
+      des: "An epic adventure to restore peace in Kumandra.",
+      image: "images/slider 4.PNG",
+    },
+    {
+      name: "Luca",
+      des: "A delightful coming-of-age story set in the Italian Riviera.",
+      image: "images/slider 5.PNG",
+    }
+  ];
+  
+    // // Function to display movies
+    // const displayMovies = (moviesToDisplay) => {
+    //     const moviesContainer = document.querySelector(".card-container");
+    //     moviesContainer.innerHTML = ""; // Clear existing movies
+
+    //     // Loop through the filtered movies array and create DOM elements for each movie
+    //     moviesToDisplay.forEach(movie => {
+    //       const card = document.createElement("div");
+    //       card.className = "card";
+
+    //       const img = document.createElement("img");
+    //       img.src = movie.image;
+    //       img.className = "card-img";
+
+    //       const cardBody = document.createElement("div");
+    //       cardBody.className = "card-body";
+
+    //       const name = document.createElement("h2");
+    //       name.className = "name";
+    //       name.textContent = movie.name;
+
+    //       const description = document.createElement("h6");
+    //       description.className = "des";
+    //       description.textContent = movie.des;
+
+
+    //       const watchlistBtn = document.createElement("button");
+    //       watchlistBtn.className = "watchlist-btn";
+    //       watchlistBtn.textContent = "Add to watchlist";
+
+    //       cardBody.appendChild(name);
+    //       cardBody.appendChild(description);
+    //       cardBody.appendChild(watchlistBtn);
+
+    //       card.appendChild(img);
+    //       card.appendChild(cardBody);
+
+    //       moviesContainer.appendChild(card);
+    //     });
+    //   };
+
+    //   // Initial render of all movies
+    //   displayMovies(movies);
+
+    //   // Search functionality
+    //   const searchBox = document.querySelector("#search");
+
+    //   searchBox.addEventListener("input", (e) => {
+    //     const searchQuery = e.target.value.toLowerCase(); // Convert input to lowercase
+
+    //     // Filter movies array based on the search query
+    //     const filteredMovies = movies.filter(movie => {
+    //       return movie.name.toLowerCase().includes(searchQuery);
+    //     });
+
+    //     // Call displayMovies with the filtered movies
+    //     displayMovies(filteredMovies);
+    //   });
+
+
+
+
+
+
+
+
+		const carousel = document.querySelector(".carousel");
+		let sliders = [];
+
+		let slideIndex = 0; // to track current slide index.
+
+		const createSlide = () => {
+		  if (slideIndex >= movies.length) {
+		    slideIndex = 0;
+		  }
+
+		  // creating DOM element
+		  let slide = document.createElement("div");
+		  let imgElement = document.createElement("img");
+		  let content = document.createElement("div");
+		  let h1 = document.createElement("h1");
+		  let p = document.createElement("p");
+     
+		  // attaching all elements
+		  imgElement.appendChild(document.createTextNode(""));
+		  h1.appendChild(document.createTextNode(movies[slideIndex].name));
+		  p.appendChild(document.createTextNode(movies[slideIndex].des));
+		  content.appendChild(h1);
+		  content.appendChild(p);
+		  slide.appendChild(content);
+		  slide.appendChild(imgElement);
+		  carousel.appendChild(slide);
+
+		  // setting up image
+		  imgElement.src = movies[slideIndex].image;
+		  slideIndex++;
+
+		  // setting elements classname
+		  slide.className = "slider";
+		  content.className = "slide-content";
+		  h1.className = "movie-title";
+		  p.className = "movie-des";
+
+		  sliders.push(slide);
+
+		  if (sliders.length) {
+		    sliders[0].style.marginLeft = `calc(-${100 * (sliders.length - 2)}% - ${
+		      30 * (sliders.length - 2)
+		    }px)`;
+		  }
+		};
+
+		for (let i = 0; i < 3; i++) {
+		  createSlide();
+		}
+
+		setInterval(() => {
+		  createSlide();
+		}, 3000);
+
+		//Video Cards
+
+		const videoCards = [...document.querySelectorAll(".video-card")];
+
+		videoCards.forEach((item) => {
+		  item.addEventListener("mouseover", () => {
+		    let video = item.children[1];
+		    video.play();
+		  });
+		  item.addEventListener("mouseleave", () => {
+		    let video = item.children[1];
+		    video.pause();
+		  });
+		});
+
+		//card sliders
+
+		let cardContainers = [...document.querySelectorAll(".card-container")];
+		let preBtns = [...document.querySelectorAll(".pre-btn")];
+		let nxtBtns = [...document.querySelectorAll(".nxt-btn")];
+
+		cardContainers.forEach((item, i) => {
+		  let containerDimensions = item.getBoundingClientRect();
+		  let containerWidth = containerDimensions.width;
+
+		  nxtBtns[i].addEventListener("click", () => {
+		    item.scrollLeft += containerWidth - 200;
+		  });
+
+		  preBtns[i].addEventListener("click", () => {
+		    item.scrollLeft -= containerWidth + 200;
+		  });
+		});
+
+
+
+
+
+
+
+
+    const TMDB_API_KEY = '3fd2be6f0c70a2a598f084ddfb75487c';
+ const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/original';
+ let currentHeroIndex = 0;
+ let trendingMovies = [];
+ function updateHeroSlide() {
+   const movie = trendingMovies[currentHeroIndex];
+   const heroElement = document.getElementById('trending-hero');
+   heroElement.style.backgroundImage = `linear-gradient(to top, #0f171e, transparent), url(${TMDB_IMAGE_BASE}${movie.backdrop_path})`;
+   document.getElementById('hero-title').textContent = movie.title;
+   document.getElementById('hero-overview').textContent = movie.overview;
+   heroElement.onclick = () => openModal(movie.id, 'movie');
+   updateDots();
+ }
+ function updateDots() {
+   const dotsContainer = document.getElementById('trending-dots');
+   dotsContainer.innerHTML = trendingMovies.slice(0, 5).map((_, index) => `<div class="dot ${index === currentHeroIndex ? 'active' : ''}" 
+           onclick="setHeroSlide(${index})"></div>`).join('');
+   dotsContainer.onclick = e => e.stopPropagation();
+ }
+ function setHeroSlide(index) {
+   event.stopPropagation();
+   currentHeroIndex = index;
+   updateHeroSlide();
+ }
+ function autoAdvanceHero() {
+   currentHeroIndex = (currentHeroIndex + 1) % Math.min(trendingMovies.length, 5);
+   updateHeroSlide();
+ }
+ async function fetchTMDBData(endpoint) {
+   const response = await fetch(`https://api.themoviedb.org/3${endpoint}?api_key=${TMDB_API_KEY}`);
+   return await response.json();
+ }
+ async function searchTMDB(query) {
+   if (!query) return [];
+   const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}`);
+   const data = await response.json();
+   return data.results.filter(item => item.media_type !== 'person' && item.poster_path && item.vote_average > 0);
+ }
+ let searchTimeout;
+ const searchInput = document.getElementById('search-input');
+ const searchResults = document.getElementById('search-results');
+ searchInput.addEventListener('input', e => {
+   clearTimeout(searchTimeout);
+   const query = e.target.value;
+   if (query.length < 2) {
+     searchResults.style.display = 'none';
+     return;
+   }
+   searchTimeout = setTimeout(async () => {
+     const results = await searchTMDB(query);
+     displaySearchResults(results);
+   }, 300);
+ });
+ function displaySearchResults(results) {
+   searchResults.innerHTML = '';
+   if (results.length === 0) {
+     searchResults.style.display = 'none';
+     return;
+   }
+   results.slice(0, 6).forEach(item => {
+     const div = document.createElement('div');
+     div.className = 'search-result-item';
+     div.innerHTML = `
+       <img class="search-result-thumb" 
+            src="${item.poster_path ? TMDB_IMAGE_BASE + item.poster_path : 'https://via.placeholder.com/60x90'}" 
+            alt="${item.title || item.name}">
+       <div class="search-result-info">
+         <div class="search-result-title">${item.title || item.name}</div>
+         <div class="search-result-rating">★ ${item.vote_average.toFixed(1)}</div>
+       </div>
+     `;
+     div.onclick = () => {
+       openModal(item.id, item.media_type);
+       searchResults.style.display = 'none';
+       searchInput.value = '';
+     };
+     searchResults.appendChild(div);
+   });
+   searchResults.style.display = 'block';
+ }
+ document.addEventListener('click', e => {
+   if (!searchResults.contains(e.target) && e.target !== searchInput) {
+     searchResults.style.display = 'none';
+   }
+ });
+ async function initializeApp() {
+   const trending = await fetchTMDBData('/trending/movie/day');
+   trendingMovies = trending.results.filter(movie => movie.backdrop_path && movie.vote_average);
+   updateHeroSlide();
+   setInterval(autoAdvanceHero, 5000);
+   const [newMovies, newTV] = await Promise.all([fetchTMDBData('/movie/now_playing'), fetchTMDBData('/tv/on_the_air')]);
+   const newReleasesContainer = document.getElementById('new-releases');
+   const combinedNew = [...newMovies.results, ...newTV.results].sort(() => Math.random() - 0.5).slice(0, 20);
+   combinedNew.forEach(item => {
+     const type = item.title ? 'movie' : 'tv';
+     const card = createMovieCard(item, type);
+     if (card) newReleasesContainer.appendChild(card);
+   });
+   const topMovies = await fetchTMDBData('/movie/top_rated');
+   const topMoviesContainer = document.getElementById('top-movies');
+   topMovies.results.forEach(movie => {
+     const card = createMovieCard(movie, 'movie');
+     if (card) topMoviesContainer.appendChild(card);
+   });
+   const topTV = await fetchTMDBData('/tv/top_rated');
+   const topTVContainer = document.getElementById('top-tv');
+   topTV.results.forEach(show => {
+     const card = createMovieCard(show, 'tv');
+     if (card) topTVContainer.appendChild(card);
+   });
+ }
+ function createMovieCard(item, type) {
+   if (!item.poster_path || !item.vote_average) return null;
+   const div = document.createElement('div');
+   div.className = 'movie-card';
+   div.innerHTML = `
+     <img class="movie-poster" src="${TMDB_IMAGE_BASE}${item.poster_path}" alt="${item.title || item.name}">
+     <div class="movie-title">${item.title || item.name}</div>
+   `;
+   div.onclick = () => openModal(item.id, type);
+   return div;
+ }
+ async function openModal(id, type) {
+   const modal = document.getElementById('modal');
+   const iframe = document.getElementById('player-iframe');
+   const loader = document.getElementById('loader');
+   modal.style.display = 'block';
+   iframe.style.opacity = '0';
+   loader.style.display = 'block';
+
+   const [details, credits] = await Promise.all([
+     fetchTMDBData(`/${type}/${id}`),
+     fetchTMDBData(`/${type}/${id}/credits`)
+   ]);
+
+   const movieDetails = document.createElement('div');
+   movieDetails.className = 'movie-details';
+
+   let seasonEpisodeHTML = '';
+   if (type === 'tv') {
+     const seasons = details.seasons.filter(s => s.season_number > 0);
+     seasonEpisodeHTML = `
+       <div class="season-episode-selector">
+         <select id="season-select" onchange="updateEpisodes(${id})">
+           ${seasons.map(season => 
+             `<option value="${season.season_number}">Season ${season.season_number}</option>`
+           ).join('')}
+         </select>
+         <select id="episode-select" onchange="updatePlayer(${id})">
+           ${Array.from({length: seasons[0]?.episode_count || 0}, (_, i) => 
+             `<option value="${i + 1}">Episode ${i + 1}</option>`
+           ).join('')}
+         </select>
+       </div>
+     `;
+   }
+
+   movieDetails.innerHTML = `
+     <h2>${details.title || details.name}</h2>
+     <div class="movie-meta">
+       <span>${new Date(details.release_date || details.first_air_date).getFullYear()}</span>
+       <span>${details.vote_average.toFixed(1)} ★</span>
+       <span>${details.runtime || details.episode_run_time?.[0] || ''} min</span>
+     </div>
+     <p class="movie-overview">${details.overview}</p>
+     ${seasonEpisodeHTML}
+     <h3>Cast</h3>
+     <div class="cast-list">
+       ${credits.cast.slice(0, 6).map(actor => actor.profile_path ? `
+         <div class="cast-item">
+           <img class="cast-photo" 
+                src="${TMDB_IMAGE_BASE + actor.profile_path}" 
+                alt="${actor.name}">
+           <div class="cast-info">
+             <div class="cast-name">${actor.name}</div>
+             <div class="cast-character">${actor.character}</div>
+           </div>
+         </div>
+       ` : '').join('')}
+     </div>
+   `;
+
+   const modalContent = document.querySelector('.modal-content');
+   modalContent.innerHTML = '';
+   const iframeContainer = document.createElement('div');
+   iframeContainer.className = 'iframe-container';
+   iframeContainer.innerHTML = `
+     <span class="close-modal" onclick="closeModal()">×</span>
+     <div class="loader" id="loader"></div>
+     <iframe id="player-iframe" allowfullscreen></iframe>
+   `;
+   modalContent.appendChild(iframeContainer);
+   modalContent.appendChild(movieDetails);
+
+   const newIframe = document.getElementById('player-iframe');
+   if (type === 'movie') {
+     newIframe.src = `https://www.youtube.com/watch?v=wcz8YDpW200${id}`;
+   } else {
+     newIframe.src = `https://www.youtube.com/watch?v=wcz8YDpW200${id}/1/1`;
+   }
+
+   newIframe.onload = () => {
+     document.getElementById('loader').style.display = 'none';
+     newIframe.style.opacity = '1';
+   };
+ }
+ async function updateEpisodes(showId) {
+   const seasonSelect = document.getElementById('season-select');
+   const episodeSelect = document.getElementById('episode-select');
+   const seasonNum = seasonSelect.value;
+   
+   const seasonDetails = await fetchTMDBData(`/tv/${showId}/season/${seasonNum}`);
+   
+   episodeSelect.innerHTML = seasonDetails.episodes.map(episode => 
+     `<option value="${episode.episode_number}">Episode ${episode.episode_number}</option>`
+   ).join('');
+   
+   updatePlayer(showId);
+ }
+ function updatePlayer(showId) {
+   const seasonSelect = document.getElementById('season-select');
+   const episodeSelect = document.getElementById('episode-select');
+   const iframe = document.getElementById('player-iframe');
+   const loader = document.getElementById('loader');
+   
+   loader.style.display = 'block';
+   iframe.style.opacity = '0';
+   
+   iframe.src = `https://picfy.xyz/embed/tv/${showId}/${seasonSelect.value}/${episodeSelect.value}`;
+   
+   iframe.onload = () => {
+     loader.style.display = 'none';
+     iframe.style.opacity = '1';
+   };
+ }
+ function closeModal() {
+   const modal = document.getElementById('modal');
+   const iframe = document.getElementById('player-iframe');
+   iframe.src = '';
+   modal.style.display = 'none';
+ }
+ document.getElementById('modal').addEventListener('click', e => {
+   if (e.target.id === 'modal') {
+     closeModal();
+   }
+ });
+ document.querySelectorAll('.carousel-arrow').forEach(arrow => {
+   arrow.addEventListener('click', () => {
+     const carousel = arrow.parentElement.querySelector('.carousel');
+     const scrollAmount = 400;
+     if (arrow.classList.contains('prev')) {
+       carousel.scrollLeft -= scrollAmount;
+     } else {
+       carousel.scrollLeft += scrollAmount;
+     }
+   });
+ });
+ initializeApp();
+</script>
+</html>

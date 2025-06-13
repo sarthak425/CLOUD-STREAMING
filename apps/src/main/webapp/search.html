@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #search-bar {
+            margin-bottom: 20px;
+        }
+        #result img {
+            width: 200px;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for a Streaming Service</h1>
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search (e.g., Amazon Prime)">
+        <button id="search-button">Go</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        // JavaScript Code
+        document.getElementById("search-button").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the form's default submit behavior
+
+            const searchQuery = document.getElementById("search-input").value.toLowerCase();
+            const resultDiv = document.getElementById("result");
+
+            // Clear previous result
+            resultDiv.innerHTML = "";
+
+            // Define images for each search term
+            const images = {
+                "amazon prime": "https://i.pinimg.com/originals/a3/9e/e9/a39ee9b903a46c029b2cce3a923ae42e.jpg",
+                "crunchyroll": "https://wikitechlibrary.com/wp-content/uploads/2022/12/crunchyroll.webp",
+                "hotstar": "https://www.medianews4u.com/wp-content/uploads/2019/09/Hotstar-750x375.jpg",
+                "netflix": "https://www.digiseller.ru/preview/903804/p1_3454529_bf5135f4.jpg"
+            };
+
+            // Check if the search query matches any key in the images object
+            if (images[searchQuery]) {
+                const img = document.createElement("img");
+                img.src = images[searchQuery];
+                img.alt = searchQuery;
+                resultDiv.appendChild(img);
+            } else {
+                resultDiv.textContent = "No results found. Please try again.";
+            }
+        });
+    </script>
+</body>
+</html>

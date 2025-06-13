@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/premium-photo/abstract-background-images-wallpaper-ai-generated_643360-70314.jpg');
+            background-size: cover; /* Makes the image cover the entire background */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-position: center; /* Centers the image */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(42, 42, 114, 0.8); /* Deep purple-blue with transparency */
+            color: #ffffff; /* White text */
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+        }
+
+        nav a {
+            color: #a3f7ff; /* Soft cyan for better readability */
+            text-decoration: none;
+            margin: 1px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff00ff; /* Bright purple for hover effect */
+            text-shadow: 0 0 5px #ff00ff; /* Adds a glowing effect */
+        }
+
+        nav form {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        nav input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        nav button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #00e5ff; /* Neon blue */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        nav button:hover {
+            background-color: #ff00ff; /* Bright purple on hover */
+            color: white;
+        }
+
+        .footer {
+            background: #000;
+            position: fixed;
+            width: 100%;
+            margin-top: 18%;
+            padding: 30px 0px;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            bottom: 0;
+        }
+
+        .footer .row {
+            width: 100%;
+            margin: 1% 0%;
+            padding: 0.6% 0%;
+            color: gray;
+            font-size: 0.8em;
+        }
+
+        .footer .row a {
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+        }
+
+        .footer .row a:hover {
+            color: #fff;
+        }
+
+        .footer .row ul {
+            width: 100%;
+        }
+
+        .footer .row ul li {
+            display: inline-block;
+            margin: 0px 30px;
+        }
+
+        .footer .row a i {
+            font-size: 2em;
+            margin: 0% 1%;
+        }
+
+        @media (max-width: 720px) {
+            .footer {
+                text-align: left;
+                padding: 5%;
+            }
+
+            .footer .row ul li {
+                display: block;
+                margin: 10px 0px;
+                text-align: left;
+            }
+
+            .footer .row a i {
+                margin: 0% 3%;
+            }
+        }
+
+        /* Main Content Styles */
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* Align rows 1 and 3 to the left */
+        .row:nth-child(odd) {
+            flex-direction: row; /* Default, left side */
+            justify-content: flex-start; /* Align to the left */
+        }
+
+        /* Align rows 2 and 4 to the right */
+        .row:nth-child(even) {
+            flex-direction: row-reverse; /* Right side */
+            justify-content: flex-start; /* Align to the right */
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image fills the box, maintaining aspect ratio */
+            border-radius: 10px; /* Keep rounded corners */
+        }
+
+        .paragraph {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            background-color: transparent;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .img:hover {
+            animation: pulse 1s infinite; /* Call the animation */
+        }
+        h1{
+        color:  rgb(25, 201, 25);
+        }
+</style>
+</head>
+<body>
+
+ <nav>
+    <a href="home.html">Apps</a>
+    <a href="About.html">About</a>
+    <a href="Contact.html">Contact</a>
+    <!-- Search Bar -->
+    <form id="search-form" onsubmit="return false;">
+        <input type="text" name="query" id="search-input" placeholder="Search..." style="padding: 5px; font-size: 16px; border-radius: 5px; border: none; outline: none;">
+        <button type="submit" id="search-button" style="padding: 5px 10px; font-size: 16px; background-color: #FFD700; border: none; border-radius: 5px; cursor: pointer;">Go</button>
+    </form>
+    <!-- Dropdown Menu -->
+    <div style="display: inline-block; position: relative;">
+        <a href="login.html" style="margin-right: 0;">Registration</a>
+        <div style="display: none; position: absolute; background-color: #333; color: white; min-width: 150px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 5px; padding: 10px;">
+            <a href="settings.html" style="display: block; text-decoration: none; padding: 5px 0; color: white;">Settings</a>
+            <a href="profile.html" style="display: block; text-decoration: none; padding: 5px 0; color: white;">Profile</a>
+        </div>
+    </div>
+</nav>
+
+ <!-- Row 1 -->
+
+ <div class="row">
+    
+     
+    <div class="paragraph">
+    
+        <p><h1>Market Focus:</h1> <h3>Crunchyroll began focusing on the Indian market in 2022, introducing regional pricing and expanding its operations significantly in 2023. The company aims to cater to the growing anime fandom in India, which is estimated to be around 53 million
+</h3>
+<h1>Content Localization: </h1><h3>To better serve Indian audiences, Crunchyroll has been localizing its content by providing dubs in languages such as Hindi, Tamil, and Telugu. Over 80 shows have been dubbed in these languages, contributing to more than 65% of the platform's total viewership in India
+</h3>
+</p>
+    </div>
+   
+    <div class="box">
+    
+         <img src="https://play-lh.googleusercontent.com/Fnor8mzNEsiWTfSTI_RXUmsaZW0eYw0RkIgIhSCphG4Y0ZgwC-zK2qzik-9VIxQDWQ" alt="Crunchyroll Clone">
+    </div>
+</div>
+
+<!-- Row 2 -->
+<div class="row">
+    <div class="paragraph">
+        <p><h1>Movies and TV Shows:</h1><h3> Hotstar features a wide range of content, including Bollywood and regional films, popular TV shows, and original programming. It has invested significantly in producing original series, such as "Special Ops" and "Aarya," which have gained critical acclaim.
+</h3>
+<h1>Live Sports:</h1><h3> The platform is particularly known for its extensive sports coverage, including major cricket tournaments like the Indian Premier League (IPL) and ICC Cricket World Cup. This focus on live sports has attracted millions of viewers, making it a go-to destination for sports enthusiasts.
+</h3>
+<h1>Multi-Language Support: </h1><h3>Hotstar offers content in multiple languages, catering to India's diverse linguistic demographics. This includes Hindi, Tamil, Telugu, Bengali, and more, allowing a broader audience to access its offerings.
+</h3>
+</p>
+ 
+    </div>
+    <div class="box">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZzl8KjjhPUHFUZhslq5oG620CZ_YfwCUWQw&s" alt="Hotstar Clone">
+    </div>
+</div>
+
+<!-- Row 3 -->
+<div class="row">
+   
+    <div class="paragraph">
+        <p><h1>Founded:</h1><h3> Netflix was established on August 29, 1997, by Reed Hastings and Marc Randolph in Scotts Valley, California. Initially, it started as a DVD rental service before transitioning to streaming in 2007.
+</h3><h1>Headquarters:</h1><h3>The company is headquartered in Los Gatos, California, USA.
+</h3> <h1>Services:</h1><h3> Netflix provides a subscription-based streaming service that allows users to watch a wide variety of films, television series, documentaries, and more on any internet-connected device. The platform is known for its original programming, including popular series like "Stranger Things," "The Crown," and "Squid Game"
+</h3> </p>
+    </div>
+     <div class="box">
+      <img src="https://yt3.googleusercontent.com/CvgBA1ypUZNxOjiCX0l1V2FbAm7oSDPZE4YkMvkpT_4iLXQ3IXWVtBgWnznHxgtcUoj50TXqZA=s900-c-k-c0x00ffffff-no-rj" alt="Netflix Clone">
+    </div>
+</div>
+
+<!-- Row 4 -->
+<div class="row">
+    <div class="paragraph">
+        <p><h1>Device Compatibility:</h1><h3> The service can be accessed on various devices, including smart TVs, streaming devices (like Fire TV and Roku), game consoles, and mobile devices through the Prime Video app
+</h3>
+
+<h1>Additional Channels:</h1><h3> Prime Video offers a feature called Amazon Channels, allowing users to subscribe to additional streaming services (like HBO, Showtime, and Starz) directly through the Prime Video interface
+</h3>
+<h1>Ad-Supported Content:</h1><h3> Starting in January 2024, Prime Video introduced limited advertisements for its content. Users can opt for an ad-free experience for an additional fee</h3>
+   </p>
+    </div>
+    <div class="box">
+        <img src="https://i.pinimg.com/originals/a3/9e/e9/a39ee9b903a46c029b2cce3a923ae42e.jpg" alt="Amazon Prime Video Clone">
+    </div>
+</div>
+
+</body>
+</html>
