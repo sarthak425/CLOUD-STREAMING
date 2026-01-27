@@ -1,7 +1,4 @@
-I looked into your **CLOUD-STREAMING** GitHub project, and here’s what it’s about: it’s a college project designed to manage a collection of movies, with features to **add, update, delete, watch, and search movies**. The tech stack is mainly **HTML (92.4%)** and **Java (7.6%)**, so it’s a web-based application with backend logic in Java and a frontend built with HTML.
-
-To connect this idea with platforms like **Amazon Prime Video** or **Netflix**, here’s how you could think about it:
-
+Cloud Streeaming project is a web-based movie management system built with Java and HTML, allowing users to  search, and watch movies. It’s essentially a demo of a streaming-style platform, similar in concept to Netflix or Amazon Prime
 ### 🔑 Core Features You Already Have
 - CRUD operations (Create, Read, Update, Delete) for movies  
 - Search functionality  
