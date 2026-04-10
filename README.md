@@ -31,3 +31,6 @@ Cloud Streeaming project is a web-based movie management system built with Java 
 4. Polish the UI to look like a streaming service catalog.  
 
 Would you like me to sketch out a **basic architecture diagram** (frontend, backend, database, cloud storage) so you can visualize how your project could scale into a Netflix-style platform?
+
+
+update 1
